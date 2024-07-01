@@ -6,7 +6,7 @@
 
 	<h2>Exames</h2>
 	
-	<s:form action="exames" cssClass="mt-3 row text-end g-3">
+	<s:form action="exames" cssClass="row text-end g-3">
 	    <div class="col-auto">
 	        <label for="cdExame" class="visually-hidden">Código</label>
 	        <s:textfield type="number" name="cdExame" id="cdExame" cssClass="form-control" placeholder="Código"/>

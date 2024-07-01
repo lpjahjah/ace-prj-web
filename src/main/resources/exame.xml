@@ -14,6 +14,14 @@
         <action name="list" class="com.ace.exames.web.controllers.ExamesController" method="exames">
             <result>/WEB-INF/exame/List.jsp</result>
         </action>
+        
+        <action name="exame" class="com.ace.exames.web.controllers.ExamesController" method="exame">
+            <result>/WEB-INF/exame/Visualize.jsp</result>
+        </action>
+        
+        <action name="delete" class="com.ace.exames.web.controllers.ExamesController" method="delete">
+            <result>/WEB-INF/exame/List.jsp</result>
+        </action>
 
 <!--         <action name="Login_*" method="{1}" class="com.ace.exames.web.example.Login"> -->
 <!--             <result name="input">/WEB-INF/example/Login.jsp</result> -->
