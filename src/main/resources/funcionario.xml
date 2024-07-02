@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!-- 
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+    <package name="funcionarios" namespace="/funcionarios" extends="struts-default">
+
+        <default-action-ref name="list" />
+
+        <action name="list" class="com.ace.exames.web.controllers.FuncionariosController" method="funcionarios">
+            <result>/WEB-INF/funcionario/List.jsp</result>
+        </action>
+        
+        <action name="funcionario" class="com.ace.exames.web.controllers.FuncionariosController" method="funcionario">
+            <result>/WEB-INF/funcionario/Visualize.jsp</result>
+        </action>
+        
+        <action name="create" class="com.ace.exames.web.controllers.FuncionariosController" method="create">
+            <result name="input">/WEB-INF/funcionario/Create.jsp</result>
+            <result name="success" type="redirectAction">list</result>
+        </action>
+        
+        <action name="update" class="com.ace.exames.web.controllers.FuncionariosController" method="update">
+            <result name="input">/WEB-INF/funcionario/Update.jsp</result>
+			<result name="success" type="redirectAction">
+		        <param name="actionName">funcionario</param>
+		        <param name="id">${funcionario.cdFuncionario}</param>
+			</result>
+        </action>
+        
+        <action name="delete" class="com.ace.exames.web.controllers.FuncionariosController" method="delete">
+            <result type="redirectAction">list</result>
+        </action>
+
+    </package>
+</struts>

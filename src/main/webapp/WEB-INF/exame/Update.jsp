@@ -5,7 +5,7 @@
 <main role="main" class="container my-4">
 
 	<div class="d-flex justify-content-between">
-		<h2>Novo Exame</h2>
+		<h2>Atualizar Exame</h2>
 	</div>
 	
 	<s:form class="mt-3" action="update">

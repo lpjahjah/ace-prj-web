@@ -14,7 +14,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">Funcionarios</a>
+          <a class="nav-link" href="<s:url namespace='/funcionarios' action=''/>">Funcionarios</a>
         </li>
         
         <li class="nav-item">

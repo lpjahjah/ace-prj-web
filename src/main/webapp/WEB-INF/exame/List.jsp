@@ -68,7 +68,7 @@
 	    					<i class="fas fa-dot-circle text-danger"></i>
 	    				</s:else>
 			      	</td>
-					<td>
+					<td class="text-end pe-4">
             			<a class="link-info link-underline link-underline-opacity-0" href="<s:url action='exame'><s:param name='id' value='%{cdExame}'/></s:url>">Acessar</a>
         			</td>
 				</tr>
