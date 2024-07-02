@@ -11,13 +11,16 @@ import com.ace.exames.core.interfaces.ExamesService;
 import com.ace.exames.core.models.Exame;
 
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
 
 import lombok.Getter;
 import lombok.Setter;
 
 
-public class ExamesController {
+public class ExamesController extends ActionSupport {
 	
+	private static final long serialVersionUID = 1L;
+
 	@EJB(lookup  = "ejb:\"\"/core-0.0.1-SNAPSHOT/\"\"/ExamesService!com.ace.exames.core.interfaces.ExamesService")
     private ExamesService examesService;
 	
@@ -72,6 +75,30 @@ public class ExamesController {
 		return Action.SUCCESS;
 	}
 	
+	public String create() {
+		if (exame == null || fieldsHasError())
+			return Action.INPUT;
+		
+		examesService.createExame(exame);
+		
+		return Action.SUCCESS;
+	}
+	
+	public String update() {
+		if (exame == null) {
+			exame = examesService.getExame(id);
+			
+			return Action.INPUT;
+		}
+		
+		if (fieldsHasError())
+			return Action.INPUT;
+		
+		examesService.updateExame(exame);
+		
+		return Action.SUCCESS;
+	}
+	
 	@Getter
 	@Setter
 	private Integer toDelete;
@@ -80,7 +107,17 @@ public class ExamesController {
 		
 		examesService.deleteExame(toDelete);
 		
-		return exames();
+		return Action.SUCCESS;
 	}
 	
+	private boolean fieldsHasError() {
+		boolean valid = false;
+		
+		if (exame != null && exame.getNmExame().isBlank()) {
+			addFieldError("nmExame", "Nome é obrigatório");
+			valid = true;
+		}
+		
+		return valid;
+	}
 }

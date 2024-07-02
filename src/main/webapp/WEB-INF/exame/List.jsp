@@ -3,8 +3,15 @@
 <s:include value="/WEB-INF/templates/UpperBody.jsp"></s:include>
 
 <main role="main" class="container my-4">
-
-	<h2>Exames</h2>
+	
+	<div class="d-flex justify-content-between">
+		<h2>Exames</h2>
+		<a href="<s:url action='create'></s:url>">
+			<button class="btn btn-success">
+				Novo Exame
+			</button>
+		</a>
+	</div>
 	
 	<s:form action="exames" cssClass="mt-3 row text-end g-3">
 	    <div class="col-auto">
@@ -80,8 +87,8 @@
 	    
 		<s:hidden name="statusExame" id="statusExame" cssClass="form-select"/>
 		
-		<div class="text-end mt-2">
-			<s:submit class="btn btn-dark" value="Carregar" />
+		<div class="text-end mt-4">
+			<s:submit class="btn btn-dark" value="Carregar mais" />
 		</div>
     </s:form>	
 

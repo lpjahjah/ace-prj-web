@@ -10,15 +10,15 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<s:url namespace='/exames' action=''/>">Exames</a>
+          <a class="nav-link" href="<s:url namespace='/exames' action=''/>">Exames</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">Agenda</a>
+          <a class="nav-link" href="#">Funcionarios</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">Usuarios</a>
+          <a class="nav-link" href="#">Exames Realizados</a>
         </li>
         
       </ul>

@@ -4,87 +4,43 @@
 
 <main role="main" class="container my-4">
 
-	<h2>Exames</h2>
+	<div class="d-flex justify-content-between">
+		<h2>Novo Exame</h2>
+	</div>
 	
-	<s:form action="exames" cssClass="row text-end g-3">
-	    <div class="col-auto">
-	        <label for="cdExame" class="visually-hidden">Código</label>
-	        <s:textfield type="number" name="cdExame" id="cdExame" cssClass="form-control" placeholder="Código"/>
-	    </div>
-	    <div class="col-auto">
-	        <label for="nmExame" class="visually-hidden">Nome</label>
-	        <s:textfield name="nmExame" id="nmExame" cssClass="form-control" placeholder="Nome"/>
-	    </div>
-	    <div class="col-auto">
-	    	<label for="statusExame" class="visually-hidden">Status</label>
-		    <s:select
-		        name="statusExame" 
-		        list="allStatusExame" 
-		        listKey="name()" 
-		        listValue="name()" 
-		        headerKey=""
-		        headerValue="Status"
-		        cssClass="form-select"
-		        id="statusExame"
-	        />
-        </div>
-	    <div class="col-auto">
-	        <s:submit cssClass="btn btn-dark mb-3" value="Buscar"/>
-	    </div>
-	</s:form>
-	
-	<table class="table table-hover">
-		<thead class="table-light">
-	    	<tr>
-	    		<th scope="col">#</th>
-	      		<th scope="col">Nome</th>
-	      		<th scope="col">Ativo</th>
-	      		<th scope="col"></th>
-	    	</tr>
-	  	</thead>
-	  	
-	  	<tbody>
-		  
-			<s:iterator value="exames">
-				<tr>
-					<th scope="row">
-						<s:property value="cdExame" />
-					</th>
-					<td>
-			      		<s:property value="nmExame" />
-			      	</td>
-			      	<td>
-				      	<s:if test="%{icAtivo}">
-							<i class="fas fa-dot-circle text-success"></i>
-	    				</s:if>
-	    				<s:else>
-	    					<i class="fas fa-dot-circle text-danger"></i>
-	    				</s:else>
-			      	</td>
-					<td>
-            			<a class="link-info link-underline link-underline-opacity-0" href="<s:url action='exame'><s:param name='id' value='%{cdExame}'/></s:url>">Acessar</a>
-        			</td>
-				</tr>
-			</s:iterator>
-		    
-		</tbody>
-	</table>
-	
-	
-	<s:form action="exames">
-		<s:hidden name="page" value="%{page + 1}" />
+	<s:form class="mt-3" action="create">
 		
-		<s:hidden type="number" name="cdExame" id="cdExame" cssClass="form-control" placeholder="Código"/>
-	    
-	    <s:hidden name="nmExame" id="nmExame" cssClass="form-control" placeholder="Nome"/>
-	    
-		<s:hidden name="statusExame" id="statusExame" cssClass="form-select"/>
-		
-		<div class="text-end mt-2">
-			<s:submit class="btn btn-dark" value="Carregar" />
+		<div class="mb-3">
+		    <label for="nmExame" class="form-label">Nome do Exame</label>
+	    	<s:textfield class="form-control" id="nmExame" name="exame.nmExame" />
+	    	<s:fielderror fieldName="nmExame" cssClass="text-danger" />
 		</div>
-    </s:form>	
-
+	    
+	    <div class="mb-3 form-check">
+	    	<s:checkbox class="form-check-input" id="icAtivo" name="exame.icAtivo" fieldValue="true" />
+		    <label for="icAtivo" class="form-check-label">Ativo</label>
+		    <s:fielderror fieldName="icAtivo" cssClass="text-danger" />
+		</div>
+	    
+	    <div class="mb-3">
+		    <label for="dsDetalheExame" class="form-label">Detalhes do Exame 1</label>
+	    	<s:textarea class="form-control" id="dsDetalheExame" name="exame.dsDetalheExame" rows="4" />
+	    	<s:fielderror fieldName="dsDetalheExame" cssClass="text-danger" />
+		</div>
+	    
+	    <div class="mb-3">
+		    <label for="dsDetalheExame1" class="form-label">Detalhes do Exame 2</label>
+	    	<s:textarea class="form-control" id="dsDetalheExame1" name="exame.dsDetalheExame1" rows="4" />
+	    	<s:fielderror fieldName="dsDetalheExame1" cssClass="text-danger" />
+		</div>
+		
+		<div>
+	        <s:submit cssClass="btn btn-success mb-3" value="Criar"/>
+	    </div>
+		
+	</s:form>
+	<s:actionerror cssClass="text-danger" />
+	
 </main>
 
 <s:include value="/WEB-INF/templates/LowerBody.jsp"></s:include>

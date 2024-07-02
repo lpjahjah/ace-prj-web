@@ -19,9 +19,23 @@
             <result>/WEB-INF/exame/Visualize.jsp</result>
         </action>
         
-        <action name="delete" class="com.ace.exames.web.controllers.ExamesController" method="delete">
-            <result>/WEB-INF/exame/List.jsp</result>
+        <action name="create" class="com.ace.exames.web.controllers.ExamesController" method="create">
+            <result name="input">/WEB-INF/exame/Create.jsp</result>
+            <result name="success" type="redirectAction">list</result>
         </action>
+        
+        <action name="update" class="com.ace.exames.web.controllers.ExamesController" method="update">
+            <result name="input">/WEB-INF/exame/Update.jsp</result>
+			<result name="success" type="redirectAction">
+		        <param name="actionName">exame</param>
+		        <param name="id">${exame.cdExame}</param>
+			</result>
+        </action>
+        
+        <action name="delete" class="com.ace.exames.web.controllers.ExamesController" method="delete">
+            <result type="redirectAction">list</result>
+        </action>
+        
 
 <!--         <action name="Login_*" method="{1}" class="com.ace.exames.web.example.Login"> -->
 <!--             <result name="input">/WEB-INF/example/Login.jsp</result> -->

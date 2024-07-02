@@ -6,9 +6,18 @@
 
 	<div class="d-flex justify-content-between">
 		<h2>Visualização de Exame</h2>
-		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-			Deletar
-		</button>
+		<div class="d-flex">
+			<a href="<s:url action='update'><s:param name="id" value="%{exame.cdExame}" /></s:url>">
+				<button class="btn btn-primary">
+					Editar
+				</button>
+			</a>
+			<a class="ms-3">
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+					Deletar
+				</button>
+			</a>
+		</div>
 	</div>
 	
 	<s:form class="mt-3">
@@ -24,7 +33,7 @@
 		</div>
 	    
 	    <div class="mb-3 form-check">
-	    	<s:checkbox class="form-check-input" id="icAtivo" name="exame.icAtivo" value="exame.icAtivo" disabled="true" readonly="true" />
+	    	<s:checkbox class="form-check-input" id="icAtivo" name="exame.icAtivo" value="%{exame.icAtivo}" disabled="true" readonly="true" />
 		    <label for="icAtivo" class="form-check-label">Ativo</label>
 		</div>
 	    
