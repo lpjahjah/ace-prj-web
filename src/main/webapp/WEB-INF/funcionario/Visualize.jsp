@@ -43,7 +43,8 @@
 				</div>
 				<div class="modal-body">
 					Tem certeza que deseja excluir o seguinte funcionário? <br>
-					<strong><s:property value="%{funcionario.nmFuncionario}" /></strong>
+					<strong><s:property value="%{funcionario.nmFuncionario}" /></strong> <br><br>
+					<p class="text-danger">* Todos seus exames realizados também serão deletados<p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
