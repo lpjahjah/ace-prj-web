@@ -6,10 +6,12 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.ui.theme" value="simple"/>
-
-    
+    <constant name="struts.locale" value="pt_BR" />
+	<constant name="struts.custom.i18n.resources" value="struts-messages" />
+	
     <include file="exame.xml"/>
     <include file="funcionario.xml"/>
+    <include file="exame-realizado.xml"/>
 
     <package name="default" namespace="/" extends="struts-default">
 

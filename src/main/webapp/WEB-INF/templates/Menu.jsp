@@ -18,7 +18,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">Exames Realizados</a>
+          <a class="nav-link" href="<s:url namespace='/exames-realizados' action=''/>">Exames Realizados</a>
         </li>
         
       </ul>

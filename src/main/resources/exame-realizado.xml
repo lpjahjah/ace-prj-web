@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!-- 
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+    <package name="exames-realizados" namespace="/exames-realizados" extends="struts-default">
+
+        <default-action-ref name="list" />
+
+        <action name="list" class="com.ace.exames.web.controllers.ExamesRealizadosController" method="examesRealizados">
+            <result>/WEB-INF/exame-realizado/List.jsp</result>
+        </action>
+        
+        <action name="exame-realizado" class="com.ace.exames.web.controllers.ExamesRealizadosController" method="exameRealizado">
+            <result>/WEB-INF/exame-realizado/Visualize.jsp</result>
+        </action>
+        
+        <action name="create" class="com.ace.exames.web.controllers.ExamesRealizadosController" method="create">
+            <result name="input">/WEB-INF/exame-realizado/Create.jsp</result>
+            <result name="success" type="redirectAction">list</result>
+        </action>
+        
+        <action name="update" class="com.ace.exames.web.controllers.ExamesRealizadosController" method="update">
+            <result name="input">/WEB-INF/exame-realizado/Update.jsp</result>
+			<result name="success" type="redirectAction">
+		        <param name="actionName">exame-realizado</param>
+		        <param name="id">${exameRealizado.cdExameRealizado}</param>
+			</result>
+        </action>
+        
+        <action name="delete" class="com.ace.exames.web.controllers.ExamesRealizadosController" method="delete">
+            <result type="redirectAction">list</result>
+        </action>
+
+    </package>
+</struts>
