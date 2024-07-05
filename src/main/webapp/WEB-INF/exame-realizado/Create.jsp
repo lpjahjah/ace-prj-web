@@ -8,11 +8,17 @@
 		<h2>Novo Exame Realizado</h2>
 	</div>
 	
+	<s:if test="hasActionErrors()">
+	    <div class="alert alert-danger mt-3" role="alert">
+	    	<s:actionerror />
+	    </div>
+	</s:if>
+	
 	<s:form class="mt-3" action="create">
 	
 		<div class="mb-3">
 	    	<label for="dtRealizacao" class="form-label">Data Realização</label>
-	        <s:textfield type="date" cssClass="form-control" id="dtRealizacao" name="exameRealizado.dtRealizacao"/>
+	        <s:textfield type="date" cssClass="form-control" id="dtRealizacao" name="exameRealizado.dtRealizacao" value="%{formattedDtRealizacao}"/>
 		    <s:fielderror fieldName="dtRealizacao" cssClass="text-danger" />
 		</div>	
 		
@@ -51,7 +57,6 @@
 	    </div>
 		
 	</s:form>
-	<s:actionerror cssClass="text-danger" />
 	
 </main>
 

@@ -8,6 +8,12 @@
 		<h2>Atualizar Exame Realizado</h2>
 	</div>
 	
+	<s:if test="hasActionErrors()">
+	    <div class="alert alert-danger mt-3" role="alert">
+	    	<s:actionerror />
+	    </div>
+	</s:if>
+	
 	<s:form class="mt-3" action="update">
 	
 		<s:hidden id="cdExame" name="exameRealizado.cdExameRealizado" value="%{exameRealizado.cdExameRealizado}" />
@@ -51,7 +57,6 @@
 	    </div>
 		
 	</s:form>
-	<s:actionerror cssClass="text-danger" />
 	
 </main>
 

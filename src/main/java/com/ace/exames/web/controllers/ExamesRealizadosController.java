@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
+import com.ace.exames.core.exceptions.ExameRealizadoAlreadyExistsException;
 import com.ace.exames.core.exceptions.RequiredFieldsException;
 import com.ace.exames.core.interfaces.ExamesRealizadosService;
 import com.ace.exames.core.interfaces.ExamesService;
@@ -143,6 +144,12 @@ public class ExamesRealizadosController extends ActionSupport {
 			examesRealizadosService.createExameRealizado(exameRealizado);
 		} catch (RequiredFieldsException e) {
 			e.printStackTrace();
+			fillFuncionariosAndExames();
+			return Action.INPUT;
+		} catch (ExameRealizadoAlreadyExistsException e) {
+			e.printStackTrace();
+			fillFuncionariosAndExames();
+			addActionError("Exame Realizado já existente. Mude algum campo e tente novamente.");
 			return Action.INPUT;
 		}
 		
@@ -177,6 +184,12 @@ public class ExamesRealizadosController extends ActionSupport {
 			examesRealizadosService.updateExameRealizado(exameRealizado);
 		} catch (RequiredFieldsException e) {
 			e.printStackTrace();
+			fillFuncionariosAndExames();
+			return Action.INPUT;
+		} catch (ExameRealizadoAlreadyExistsException e) {
+			e.printStackTrace();
+			fillFuncionariosAndExames();
+			addActionError("Exame Realizado já existente. Mude algum campo e tente novamente.");
 			return Action.INPUT;
 		}
 		

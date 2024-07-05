@@ -21,6 +21,10 @@
           <a class="nav-link" href="<s:url namespace='/exames-realizados' action=''/>">Exames Realizados</a>
         </li>
         
+        <li class="nav-item">
+          <a class="nav-link" href="<s:url namespace='/relatorios' action=''/>">Relatórios</a>
+        </li>
+        
       </ul>
     </div>
   </div>
