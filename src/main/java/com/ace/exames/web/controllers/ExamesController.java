@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 
 import com.ace.exames.core.enums.ExameStatusEnum;
+import com.ace.exames.core.exceptions.ExameDeletionException;
 import com.ace.exames.core.exceptions.RequiredFieldsException;
 import com.ace.exames.core.interfaces.ExamesService;
 import com.ace.exames.core.models.Exame;
@@ -114,9 +115,18 @@ public class ExamesController extends ActionSupport {
 	@Setter
 	private Integer toDelete;
 	
+	@Getter
+	@Setter
+	private boolean deletionError = false;
+	
 	public String delete() {
 		
-		examesService.deleteExame(toDelete);
+		try {
+			examesService.deleteExame(toDelete);
+		} catch (ExameDeletionException e) {
+			deletionError = true;
+			return Action.ERROR;
+		}
 		
 		return Action.SUCCESS;
 	}

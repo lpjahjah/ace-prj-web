@@ -33,7 +33,12 @@
         </action>
         
         <action name="delete" class="com.ace.exames.web.controllers.ExamesController" method="delete">
-            <result type="redirectAction">list</result>
+            <result name="success" type="redirectAction">list</result>
+            <result name="error" type="redirectAction">
+		        <param name="actionName">exame</param>
+		        <param name="id">${toDelete}</param>
+		        <param name="deletionError">true</param>
+			</result>
         </action>
         
 

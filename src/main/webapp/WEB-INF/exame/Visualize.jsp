@@ -20,6 +20,14 @@
 		</div>
 	</div>
 	
+	<s:if test="deletionError">
+	    <div class="alert alert-danger mt-3" role="alert">
+	        <i class="fas fa-exclamation-triangle"></i> Não foi possível deletar o exame pois ele possui exames realizados em seu nome. Primeiro exclua os exames realizados para poder deletá-lo.
+	    </div>
+	</s:if>
+	
+	<s:actionerror cssClass="text-danger" />
+	
 	<s:form class="mt-3">
 		
 		<div class="mb-3">
