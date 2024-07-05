@@ -8,9 +8,10 @@
 		<h2>Relatório de Exames Realizados</h2>
 	</div>
 	
-	<s:actionerror />
-	
 	<s:form action="relatorio" cssClass="mt-3 row text-end g-3">
+	
+		<s:hidden id="firstAccess" name="firstAccess" value="false" />
+	
 	    <div class="col-auto">
 	    	<label for="dtInicial" class="visually-hidden">Data Inicial</label>
 	        <s:textfield type="date" cssClass="form-control" id="dtInicial" name="dtInicial" value="%{formattedDtInicial}" placeholder="Data Inicial"/>
@@ -27,6 +28,7 @@
 	        <s:submit cssClass="btn btn-dark mb-3" value="Buscar"/>
 	    </div>
 	</s:form>
+	<s:actionerror cssClass="text-danger" />
 	
 	<table class="table table-bordered">
 		<thead class="table-light">

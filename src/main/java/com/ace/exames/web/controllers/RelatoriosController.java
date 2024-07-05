@@ -36,6 +36,10 @@ public class RelatoriosController extends ActionSupport {
 	@Setter
 	private Date dtFinal;
 	
+	@Getter
+	@Setter
+	private Boolean firstAccess = true;
+	
 	public String relatorio() {		
 		if (fieldsHasError()) {
 			return Action.INPUT;
@@ -75,15 +79,18 @@ public class RelatoriosController extends ActionSupport {
     }
 	
 	private boolean fieldsHasError() {
+		if (firstAccess)
+			return true;
+		
 		boolean hasError = false;
 		
 		if (dtInicial == null) {
-			addFieldError("funcionario", "Funcionário é obrigatório");
+			addFieldError("dtInicial", "Data Inicial é obrigatória");
 			hasError = true;
 		}
 		
 		if (dtFinal == null) {
-			addFieldError("exame", "Exame é obrigatório");
+			addFieldError("dtFinal", "Data Final é obrigatória");
 			hasError = true;
 		}
 		
