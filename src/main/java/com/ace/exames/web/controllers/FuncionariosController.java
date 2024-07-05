@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
+import com.ace.exames.core.exceptions.RequiredFieldsException;
 import com.ace.exames.core.interfaces.FuncionariosService;
 import com.ace.exames.core.models.Funcionario;
 import com.opensymphony.xwork2.Action;
@@ -69,7 +70,12 @@ public class FuncionariosController extends ActionSupport {
 		if (funcionario == null || fieldsHasError())
 			return Action.INPUT;
 		
-		funcionariosService.createFuncionario(funcionario);
+		try {
+			funcionariosService.createFuncionario(funcionario);
+		} catch (RequiredFieldsException e) {
+			e.printStackTrace();
+			return Action.INPUT;
+		}
 		
 		return Action.SUCCESS;
 	}
@@ -84,7 +90,12 @@ public class FuncionariosController extends ActionSupport {
 		if (fieldsHasError())
 			return Action.INPUT;
 		
-		funcionariosService.updateFuncionario(funcionario);
+		try {
+			funcionariosService.updateFuncionario(funcionario);
+		} catch (RequiredFieldsException e) {
+			e.printStackTrace();
+			return Action.INPUT;
+		}
 		
 		return Action.SUCCESS;
 	}

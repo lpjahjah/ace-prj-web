@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 
 import com.ace.exames.core.enums.ExameStatusEnum;
+import com.ace.exames.core.exceptions.RequiredFieldsException;
 import com.ace.exames.core.interfaces.ExamesService;
 import com.ace.exames.core.models.Exame;
 
@@ -79,7 +80,12 @@ public class ExamesController extends ActionSupport {
 		if (exame == null || fieldsHasError())
 			return Action.INPUT;
 		
-		examesService.createExame(exame);
+		try {
+			examesService.createExame(exame);
+		} catch (RequiredFieldsException e) {
+			e.printStackTrace();
+			return Action.INPUT;
+		}
 		
 		return Action.SUCCESS;
 	}
@@ -94,7 +100,12 @@ public class ExamesController extends ActionSupport {
 		if (fieldsHasError())
 			return Action.INPUT;
 		
-		examesService.updateExame(exame);
+		try {
+			examesService.updateExame(exame);
+		} catch (RequiredFieldsException e) {
+			e.printStackTrace();
+			return Action.INPUT;
+		}
 		
 		return Action.SUCCESS;
 	}

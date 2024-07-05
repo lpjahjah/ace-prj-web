@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
+import com.ace.exames.core.exceptions.RequiredFieldsException;
 import com.ace.exames.core.interfaces.ExamesRealizadosService;
 import com.ace.exames.core.interfaces.ExamesService;
 import com.ace.exames.core.interfaces.FuncionariosService;
@@ -138,7 +139,12 @@ public class ExamesRealizadosController extends ActionSupport {
 		exameRealizado.setFuncionario(selectedFuncionario);
 		exameRealizado.setExame(selectedExame);
 		
-		examesRealizadosService.createExameRealizado(exameRealizado);
+		try {
+			examesRealizadosService.createExameRealizado(exameRealizado);
+		} catch (RequiredFieldsException e) {
+			e.printStackTrace();
+			return Action.INPUT;
+		}
 		
 		return Action.SUCCESS;
 	}
@@ -167,7 +173,12 @@ public class ExamesRealizadosController extends ActionSupport {
 		exameRealizado.setFuncionario(selectedFuncionario);
 		exameRealizado.setExame(selectedExame);
 		
-		examesRealizadosService.updateExameRealizado(exameRealizado);
+		try {
+			examesRealizadosService.updateExameRealizado(exameRealizado);
+		} catch (RequiredFieldsException e) {
+			e.printStackTrace();
+			return Action.INPUT;
+		}
 		
 		return Action.SUCCESS;
 	}
