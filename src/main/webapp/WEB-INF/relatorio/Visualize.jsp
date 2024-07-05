@@ -27,10 +27,16 @@
 	    <div class="col-auto">
 	        <s:submit cssClass="btn btn-dark mb-3" value="Buscar"/>
 	    </div>
+	    
+	    <s:if test="examesRealizados != null && !examesRealizados.isEmpty()">
+		    <div class="col-auto ms-auto">
+		    	<button id="downloadExcelBtn" type="button" class="btn btn-success mb-3">Baixar Excel</button>
+		    </div>
+	    </s:if>
 	</s:form>
 	<s:actionerror cssClass="text-danger" />
 	
-	<table class="table table-bordered">
+	<table id="relatorioTable" class="table table-bordered">
 		<thead class="table-light">
 	    	<tr>
 	    		<th scope="col">Código Funcionário</th>
@@ -67,5 +73,9 @@
 	</table>
 
 </main>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+<script src="<s:url value='/js/exportTable.js' />"></script>
 
 <s:include value="/WEB-INF/templates/LowerBody.jsp"></s:include>
