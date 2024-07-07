@@ -13,6 +13,7 @@
     <include file="funcionario.xml"/>
     <include file="exame-realizado.xml"/>
     <include file="relatorio.xml"/>
+    <include file="usuario.xml"/>
 
     <package name="default" namespace="/" extends="struts-default">
 

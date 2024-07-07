@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+        
+<struts>
+    <package name="usuarios" namespace="/usuarios" extends="struts-default">
+
+        <default-action-ref name="list" />
+
+        <action name="list" class="com.ace.exames.web.controllers.UsuariosController" method="usuarios">
+            <result>/WEB-INF/usuario/List.jsp</result>
+        </action>
+        
+        <action name="usuario" class="com.ace.exames.web.controllers.UsuariosController" method="usuario">
+            <result>/WEB-INF/usuario/Visualize.jsp</result>
+        </action>
+        
+        <action name="create" class="com.ace.exames.web.controllers.UsuariosController" method="create">
+            <result name="input">/WEB-INF/usuario/Create.jsp</result>
+            <result name="success" type="redirectAction">list</result>
+        </action>
+        
+        <action name="update" class="com.ace.exames.web.controllers.UsuariosController" method="update">
+            <result name="input">/WEB-INF/usuario/Update.jsp</result>
+			<result name="success" type="redirectAction">
+		        <param name="actionName">usuario</param>
+		        <param name="id">${usuario.cdUsuario}</param>
+			</result>
+        </action>
+        
+        <action name="delete" class="com.ace.exames.web.controllers.UsuariosController" method="delete">
+            <result type="redirectAction">list</result>
+        </action>
+
+    </package>
+</struts>
