@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!-- 
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="login" />
+
+        <action name="login" class="com.ace.exames.web.controllers.AuthenticationController" method="login">
+            <result name="input">/WEB-INF/authentication/Login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="namespace">/home</param>
+                <param name="actionName">home</param>
+            </result>
+        </action>
+        
+        <action name="logout" class="com.ace.exames.web.controllers.AuthenticationController" method="logout">
+            <result type="redirectAction">login</result>
+        </action>
+
+    </package>
+</struts>

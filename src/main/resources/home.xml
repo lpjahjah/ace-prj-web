@@ -7,9 +7,8 @@
   - of how to break up the configuration file into multiple files.
 -->
 <struts>
-    <package name="relatorios" namespace="/relatorios" extends="struts-default">
-
-		<interceptors>
+    <package name="home" namespace="/home" extends="struts-default">
+    	<interceptors>
             <interceptor name="authInterceptor" class="com.ace.exames.web.interceptors.AuthenticationInterceptor"/>
             <interceptor-stack name="authStack">
 				<interceptor-ref name="defaultStack"/>
@@ -18,8 +17,8 @@
         </interceptors>
         
         <default-interceptor-ref name="authStack" />
-
-        <default-action-ref name="" />
+        
+        <default-action-ref name="home" />
         
         <global-results>
 			<result name="login" type="redirectAction">
@@ -28,9 +27,8 @@
             </result>
 		</global-results>
 
-        <action name="" class="com.ace.exames.web.controllers.RelatoriosController" method="relatorio">
-            <result name="input">/WEB-INF/relatorio/Visualize.jsp</result>
-            <result name="success">/WEB-INF/relatorio/Visualize.jsp</result>
+        <action name="home">
+            <result>/WEB-INF/Home.jsp</result>
         </action>
 
     </package>

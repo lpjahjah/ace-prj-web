@@ -6,7 +6,24 @@
 <struts>
     <package name="usuarios" namespace="/usuarios" extends="struts-default">
 
+		<interceptors>
+            <interceptor name="authInterceptor" class="com.ace.exames.web.interceptors.AuthenticationInterceptor"/>
+            <interceptor-stack name="authStack">
+				<interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="authInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="authStack" />
+	
         <default-action-ref name="list" />
+        
+        <global-results>
+			<result name="login" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">login</param>
+            </result>
+		</global-results>
 
         <action name="list" class="com.ace.exames.web.controllers.UsuariosController" method="usuarios">
             <result>/WEB-INF/usuario/List.jsp</result>

@@ -16,6 +16,6 @@
   </filter-mapping>
 
   <welcome-file-list>
-    <welcome-file>/WEB-INF/Home.jsp</welcome-file>
+    <welcome-file>login</welcome-file>
   </welcome-file-list>
 </web-app>

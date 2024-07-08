@@ -9,21 +9,13 @@
     <constant name="struts.locale" value="pt_BR" />
 	<constant name="struts.custom.i18n.resources" value="struts-messages" />
 	
+	<include file="authentication.xml"/>
+	<include file="home.xml"/>
     <include file="exame.xml"/>
     <include file="funcionario.xml"/>
     <include file="exame-realizado.xml"/>
     <include file="relatorio.xml"/>
     <include file="usuario.xml"/>
-
-    <package name="default" namespace="/" extends="struts-default">
-
-        <default-action-ref name="home"/>
-
-        <action name="home">
-            <result>/WEB-INF/Home.jsp</result>
-        </action>
-
-    </package>
 
     <!-- Add addition packages and configuration here. -->
 </struts>

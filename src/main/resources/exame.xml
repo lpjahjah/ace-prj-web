@@ -8,8 +8,25 @@
 -->
 <struts>
     <package name="exames" namespace="/exames" extends="struts-default">
+    
+    	<interceptors>
+            <interceptor name="authInterceptor" class="com.ace.exames.web.interceptors.AuthenticationInterceptor"/>
+            <interceptor-stack name="authStack">
+				<interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="authInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="authStack" />
 
         <default-action-ref name="list" />
+        
+        <global-results>
+			<result name="login" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">login</param>
+            </result>
+		</global-results>
 
         <action name="list" class="com.ace.exames.web.controllers.ExamesController" method="exames">
             <result>/WEB-INF/exame/List.jsp</result>
@@ -40,18 +57,6 @@
 		        <param name="deletionError">true</param>
 			</result>
         </action>
-        
-
-<!--         <action name="Login_*" method="{1}" class="com.ace.exames.web.example.Login"> -->
-<!--             <result name="input">/WEB-INF/example/Login.jsp</result> -->
-<!--             <result type="redirectAction">Menu</result> -->
-<!--         </action> -->
-
-<!--         <action name="*" class="com.ace.exames.web.example.ExampleSupport"> -->
-<!--             <result>/WEB-INF/example/{1}.jsp</result> -->
-<!--         </action> -->
-
-        <!-- Add additional "example" package actions here. -->
 
     </package>
 </struts>
